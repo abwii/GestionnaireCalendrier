@@ -1,9 +1,10 @@
 package Vues;
 
-import com.toedter.calendar.JDayChooser;
+import com.toedter.calendar.JCalendar;
 
 import javax.swing.*;
 import java.sql.SQLException;
+
 
 public class FrmMenu extends JFrame{
     private JPanel rootPane;
@@ -16,8 +17,9 @@ public class FrmMenu extends JFrame{
     private JSpinner spnDuree;
     private JPanel pnlCalendar;
     private JPanel pnlTopics;
-    private JDayChooser calendar;
+    private JCheckBox matchsDeNBACheckBox;
 
+    JCalendar jcal = new JCalendar();
 
     public FrmMenu() throws SQLException, ClassNotFoundException {
         this.setTitle("Gestionnaire de Calendriers");
@@ -25,8 +27,17 @@ public class FrmMenu extends JFrame{
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        setSize(500,300);
 
 
+        //Calendrier
+        pnlCalendar.add((jcal));
 
     }
+
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        new FrmMenu().setVisible(true);
+    }
+
 }
