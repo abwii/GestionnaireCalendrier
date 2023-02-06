@@ -23,7 +23,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="44af2" class="javax.swing.JCheckBox" binding="boxApi1">
+              <component id="44af2" class="javax.swing.JCheckBox" binding="boxJesus">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -31,7 +31,7 @@
                   <text value="Fêtes religieuses (✞)"/>
                 </properties>
               </component>
-              <component id="a306d" class="javax.swing.JCheckBox" binding="boxApi2">
+              <component id="a306d" class="javax.swing.JCheckBox" binding="boxIslam">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -39,15 +39,19 @@
                   <text value="Fêtes religieuses (☪)"/>
                 </properties>
               </component>
-              <component id="2c4e" class="javax.swing.JCheckBox" binding="boxApi3">
+              <component id="2c4e" class="javax.swing.JCheckBox" binding="boxVacances">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <selected value="false"/>
                   <text value="Vacances"/>
                 </properties>
+                <clientProperties>
+                  <hideActionText class="java.lang.Boolean" value="false"/>
+                </clientProperties>
               </component>
-              <component id="a38d0" class="javax.swing.JCheckBox" binding="boxApi4">
+              <component id="a38d0" class="javax.swing.JCheckBox" binding="boxLigue1">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -55,7 +59,7 @@
                   <text value="Matchs de Ligue 1"/>
                 </properties>
               </component>
-              <component id="c679d" class="javax.swing.JCheckBox" binding="boxApi5">
+              <component id="c679d" class="javax.swing.JCheckBox" binding="boxEsport">
                 <constraints>
                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
