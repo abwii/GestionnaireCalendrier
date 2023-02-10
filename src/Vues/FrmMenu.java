@@ -3,6 +3,8 @@ package Vues;
 import com.toedter.calendar.JCalendar;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentAdapter;
 import java.sql.SQLException;
 
 
@@ -33,11 +35,11 @@ public class FrmMenu extends JFrame{
         //Calendrier
         pnlCalendar.add((jcal));
 
+
     }
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         new FrmMenu().setVisible(true);
     }
-
 }
