@@ -4,6 +4,8 @@ import com.toedter.calendar.JCalendar;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.sql.SQLException;
 
@@ -19,7 +21,6 @@ public class FrmMenu extends JFrame{
     private JSpinner spnDuree;
     private JPanel pnlCalendar;
     private JPanel pnlTopics;
-    private JCheckBox matchsDeNBACheckBox;
 
     JCalendar jcal = new JCalendar();
 
@@ -35,11 +36,58 @@ public class FrmMenu extends JFrame{
         //Calendrier
         pnlCalendar.add((jcal));
 
+        btnExporter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                //Tout le code rigolo : récup infos checkbox, écriture dans .json, requête Google API
+
+                JOptionPane.showMessageDialog(null,"tu as cliqué sur le bouton bravo !");
+
+            }
+        });
     }
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         new FrmMenu().setVisible(true);
     }
+
+    //Getters
+
+    public JButton getBtnExporter() {
+        return btnExporter;
+    }
+
+    public JCheckBox getBoxApi1() {
+        return boxApi1;
+    }
+
+    public JCheckBox getBoxApi2() {
+        return boxApi2;
+    }
+
+    public JCheckBox getBoxApi3() {
+        return boxApi3;
+    }
+
+    public JCheckBox getBoxApi4() {
+        return boxApi4;
+    }
+
+    public JCheckBox getBoxApi5() {
+        return boxApi5;
+    }
+
+    public JSpinner getSpnDuree() {
+        return spnDuree;
+    }
+
+    //Setter
+
+    public void setJcal(JCalendar jcal) {
+        this.jcal = jcal;
+    }
+
+
 }
