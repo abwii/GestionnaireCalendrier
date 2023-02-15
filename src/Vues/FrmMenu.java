@@ -1,9 +1,14 @@
 package Vues;
 
 import com.toedter.calendar.JCalendar;
+import Controllers.*;
+import Entities.*;
+import Tools.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.sql.SQLException;
 
@@ -30,12 +35,23 @@ public class FrmMenu extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         setSize(500,300);
+        ExportJson exportJson = new ExportJson();
 
 
         //Calendrier
         pnlCalendar.add((jcal));
 
 
+        btnExporter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (exportJson.GetAllJourFeries() != null) {
+                    JOptionPane.showMessageDialog(rootPane, "Exportation réussie !");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Erreur lors de l'exportation.");
+                }
+            }
+        });
     }
 
 
