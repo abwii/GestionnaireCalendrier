@@ -1,8 +1,6 @@
 <component name="libraryTable">
-  <library name="lib">
+  <library name="jython-standalone-2.7.3">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/jfreechart-1.5.3.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.48.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jython-standalone-2.7.3.jar!/" />
     </CLASSES>
     <JAVADOC />

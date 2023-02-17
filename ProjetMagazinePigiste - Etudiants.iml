@@ -16,5 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jython-standalone-2.7.3" level="project" />
   </component>
 </module>

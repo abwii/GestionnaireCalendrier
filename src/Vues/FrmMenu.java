@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.sql.SQLException;
+import org.python.util.PythonInterpreter;
 
 
 public class FrmMenu extends JFrame{
@@ -43,6 +44,17 @@ public class FrmMenu extends JFrame{
                 //Tout le code rigolo : récup infos checkbox, écriture dans .json, requête Google API
 
                 JOptionPane.showMessageDialog(null,"tu as cliqué sur le bouton bravo !");
+
+                //Récup des infos, création du .json
+
+                //Requête Google Calendar API en Python
+
+                PythonInterpreter pythonInterpreter = new PythonInterpreter();
+                pythonInterpreter.execfile("src/py/googleAPI.py");
+
+                //Fini
+
+                JOptionPane.showMessageDialog(null,"owo");
 
             }
         });
