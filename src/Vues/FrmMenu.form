@@ -23,7 +23,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="44af2" class="javax.swing.JCheckBox" binding="boxApi1">
+              <component id="44af2" class="javax.swing.JCheckBox" binding="boxZoneA">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -31,7 +31,7 @@
                   <text value="Vacances (zone A)"/>
                 </properties>
               </component>
-              <component id="a306d" class="javax.swing.JCheckBox" binding="boxApi2">
+              <component id="a306d" class="javax.swing.JCheckBox" binding="boxZoneB">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -39,7 +39,7 @@
                   <text value="Vacances (zone B)"/>
                 </properties>
               </component>
-              <component id="2c4e" class="javax.swing.JCheckBox" binding="boxApi3">
+              <component id="2c4e" class="javax.swing.JCheckBox" binding="boxZoneC">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -47,7 +47,7 @@
                   <text value="Vacances (zone C)"/>
                 </properties>
               </component>
-              <component id="a38d0" class="javax.swing.JCheckBox" binding="boxApi4">
+              <component id="a38d0" class="javax.swing.JCheckBox" binding="boxJourFerie">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
