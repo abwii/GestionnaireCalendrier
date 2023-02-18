@@ -1,12 +1,12 @@
 package Vues;
 
 import com.toedter.calendar.JCalendar;
+import Entities.*;
+import Controllers.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
 import java.sql.SQLException;
 import org.python.util.PythonInterpreter;
 
@@ -14,10 +14,10 @@ import org.python.util.PythonInterpreter;
 public class FrmMenu extends JFrame{
     private JPanel rootPane;
     private JButton btnExporter;
-    private JCheckBox boxApi1;
-    private JCheckBox boxApi2;
-    private JCheckBox boxApi3;
-    private JCheckBox boxApi4;
+    private JCheckBox boxZoneA;
+    private JCheckBox boxZoneB;
+    private JCheckBox boxZoneC;
+    private JCheckBox boxJourFerie;
     private JCheckBox boxApi5;
     private JSpinner spnDuree;
     private JPanel pnlCalendar;
@@ -58,6 +58,12 @@ public class FrmMenu extends JFrame{
 
             }
         });
+        boxZoneA.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
 
@@ -71,20 +77,20 @@ public class FrmMenu extends JFrame{
         return btnExporter;
     }
 
-    public JCheckBox getBoxApi1() {
-        return boxApi1;
+    public JCheckBox getBoxApi1(Icon icon, boolean s) {
+        return boxZoneA;
     }
 
     public JCheckBox getBoxApi2() {
-        return boxApi2;
+        return boxZoneB;
     }
 
     public JCheckBox getBoxApi3() {
-        return boxApi3;
+        return boxZoneC;
     }
 
     public JCheckBox getBoxApi4() {
-        return boxApi4;
+        return boxJourFerie;
     }
 
     public JCheckBox getBoxApi5() {
