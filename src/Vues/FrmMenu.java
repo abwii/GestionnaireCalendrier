@@ -76,6 +76,21 @@ public class FrmMenu extends JFrame {
                 }
             }
         });
+        boxZoneB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (boxZoneB.isSelected()) {
+                    CtrlZoneB ctrlZoneB = null;
+                    try {
+                        ctrlZoneB = new CtrlZoneB(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    JSONArray zoneBListe = (JSONArray) ctrlZoneB.GetAllJourZoneB();
+                    JOptionPane.showMessageDialog(null, zoneBListe.toJSONString());
+                }
+            }
+        });
     }
 
 
