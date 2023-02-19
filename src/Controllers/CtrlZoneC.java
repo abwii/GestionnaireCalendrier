@@ -1,5 +1,5 @@
 package Controllers;
-import Entities.ZoneB;
+import Entities.ZoneC;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -8,24 +8,24 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CtrlZoneB {
+public class CtrlZoneC {
     private Connection cnx;
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public CtrlZoneB(Connection cnx) {
+    public CtrlZoneC(Connection cnx) {
         this.cnx = cnx;
     }
 
-    public ArrayList<JSONObject> GetAllJourZoneB() {
+    public ArrayList<JSONObject> GetAllJourZoneC() {
         ArrayList<JSONObject> jsonList = new JSONArray();
         try {
-            ps = cnx.prepareStatement("SELECT `summary`, `start`, `end`, `description` FROM `vacance` WHERE description = 'Zone B'");
+            ps = cnx.prepareStatement("SELECT `summary`, `start`, `end`, `description` FROM `vacance` WHERE description = 'Zone C'");
             rs = ps.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             int numColumns = rsmd.getColumnCount();
             while (rs.next()) {
-                ZoneB zoneB = new ZoneB(rs.getNString("summary"), rs.getTimestamp("start"), rs.getTimestamp("end"), rs.getNString("description"));
+                ZoneC zoneC = new ZoneC(rs.getNString("summary"), rs.getTimestamp("start"), rs.getTimestamp("end"), rs.getNString("description"));
                 JSONObject obj = new JSONObject();
                 for (int i = 1; i <= numColumns; i++) {
                     String column_name = rsmd.getColumnName(i);

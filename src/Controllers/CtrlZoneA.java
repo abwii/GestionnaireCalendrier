@@ -20,12 +20,12 @@ public class CtrlZoneA {
     public ArrayList<JSONObject> GetAllJourZoneA() {
         ArrayList<JSONObject> jsonList = new JSONArray();
         try {
-            ps = cnx.prepareStatement("SELECT `Description`, `date_de_debut`, `date_de_fin`, `Zones` FROM `vacance` WHERE Zones = 'Zone A'");
+            ps = cnx.prepareStatement("SELECT `summary`, `start`, `end`, `description` FROM `vacance` WHERE description = 'Zone A'");
             rs = ps.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             int numColumns = rsmd.getColumnCount();
             while (rs.next()) {
-                ZoneA zoneA = new ZoneA(rs.getNString("Description"), rs.getTimestamp("date_de_debut"), rs.getTimestamp("date_de_fin"), rs.getNString("Zones"));
+                ZoneA zoneA = new ZoneA(rs.getNString("summary"), rs.getTimestamp("start"), rs.getTimestamp("end"), rs.getNString("description"));
                 JSONObject obj = new JSONObject();
                 for (int i = 1; i <= numColumns; i++) {
                     String column_name = rsmd.getColumnName(i);

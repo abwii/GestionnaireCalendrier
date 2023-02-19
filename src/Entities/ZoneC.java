@@ -2,13 +2,13 @@ package Entities;
 
 import java.sql.Timestamp;
 
-public class ZoneB {
+public class ZoneC {
     private String Summary;
     private Timestamp Start;
     private Timestamp End;
     private String Description;
 
-    public ZoneB(String summary, Timestamp start, Timestamp end, String description){
+    public ZoneC(String summary, Timestamp start, Timestamp end, String description){
         this.Summary = summary;
         this.Start = start;
         this.End = end;

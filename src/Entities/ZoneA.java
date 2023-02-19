@@ -3,31 +3,31 @@ package Entities;
 import java.sql.Timestamp;
 
 public class ZoneA {
+    private String Summary;
+    private Timestamp Start;
+    private Timestamp End;
     private String Description;
-    private Timestamp date_de_debut;
-    private Timestamp date_de_fin;
-    private String Zones;
 
-    public ZoneA(String description, Timestamp date_de_debut, Timestamp date_de_fin, String zone){
+    public ZoneA(String summary, Timestamp start, Timestamp end, String description){
+        this.Summary = summary;
+        this.Start = start;
+        this.End = end;
         this.Description = description;
-        this.date_de_debut = date_de_debut;
-        this.date_de_fin = date_de_fin;
-        this.Zones = zone;
+    }
+
+    public String getSummary() {
+        return Summary;
+    }
+
+    public Timestamp getStart() {
+        return Start;
+    }
+
+    public Timestamp getEnd() {
+        return End;
     }
 
     public String getDescription() {
         return Description;
-    }
-
-    public Timestamp getDateDeDebut() {
-        return date_de_debut;
-    }
-
-    public Timestamp getDateDeFin() {
-        return date_de_fin;
-    }
-
-    public String getZones() {
-        return Zones;
     }
 }

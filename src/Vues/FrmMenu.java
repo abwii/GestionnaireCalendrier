@@ -1,21 +1,18 @@
 package Vues;
 
 import com.toedter.calendar.JCalendar;
-import Entities.*;
 import Controllers.*;
-import Tools.*;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.python.util.PythonInterpreter;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 
 public class FrmMenu extends JFrame {
+
     private JPanel rootPane;
     private JButton btnExporter;
     private JCheckBox boxZoneA;
@@ -27,34 +24,27 @@ public class FrmMenu extends JFrame {
     private JPanel pnlCalendar;
     private JPanel pnlTopics;
 
-    JCalendar jcal = new JCalendar();
+    private JCalendar jcal = new JCalendar();
 
     public FrmMenu() throws SQLException, ClassNotFoundException {
-        this.setTitle("Gestionnaire de Calendriers");
-        this.setContentPane(rootPane);
-        this.pack();
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-
+        setTitle("Gestionnaire de Calendriers");
+        setContentPane(rootPane);
+        pack();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setSize(500, 300);
 
-
-        //Calendrier
-        pnlCalendar.add((jcal));
+        pnlCalendar.add(jcal);
 
         btnExporter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //Tout le code rigolo : récup infos checkbox, écriture dans .json, requête Google API
-
                 JOptionPane.showMessageDialog(null, "tu as cliqué sur le bouton bravo !");
 
-                //Récup des infos, création du .json
+                // Récupération des informations et création du fichier .json
 
-                //Requête Google Calendar API en Python
-
-                //Fini
+                // Requête Google Calendar API en Python
 
                 JOptionPane.showMessageDialog(null, "owo");
 
@@ -65,40 +55,75 @@ public class FrmMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (boxZoneA.isSelected()) {
-                    CtrlZoneA ctrlZoneA = null;
                     try {
-                        ctrlZoneA = new CtrlZoneA(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                        CtrlZoneA ctrlZoneA = new CtrlZoneA(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                        JSONArray zoneAListe = (JSONArray) ctrlZoneA.GetAllJourZoneA();
+                        JOptionPane.showMessageDialog(null, "ca marche");
+                        try (FileWriter file = new FileWriter("resultatA.json")) {
+                            file.write(zoneAListe.toJSONString());
+                            file.flush();
+                            JOptionPane.showMessageDialog(null, "Résultat ecrit dans le fichier JSON");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
-                    JSONArray zoneAListe = (JSONArray) ctrlZoneA.GetAllJourZoneA();
-                    JOptionPane.showMessageDialog(null, zoneAListe.toJSONString());
                 }
             }
         });
+
         boxZoneB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (boxZoneB.isSelected()) {
-                    CtrlZoneB ctrlZoneB = null;
                     try {
-                        ctrlZoneB = new CtrlZoneB(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                        CtrlZoneB ctrlZoneB = new CtrlZoneB(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                        JSONArray zoneBListe = (JSONArray) ctrlZoneB.GetAllJourZoneB();
+                        JOptionPane.showMessageDialog(null, "ca marche aussi");
+                        try (FileWriter file = new FileWriter("resultatB.json")) {
+                            file.write(zoneBListe.toJSONString());
+                            file.flush();
+                            JOptionPane.showMessageDialog(null, "Résultat ecrit dans le fichier JSON");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
-                    JSONArray zoneBListe = (JSONArray) ctrlZoneB.GetAllJourZoneB();
-                    JOptionPane.showMessageDialog(null, zoneBListe.toJSONString());
+                }
+            }
+        });
+
+        boxZoneC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (boxZoneC.isSelected()) {
+                    try {
+                        CtrlZoneC ctrlZoneC = new CtrlZoneC(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                        JSONArray zoneCListe = (JSONArray) ctrlZoneC.GetAllJourZoneC();
+                        JOptionPane.showMessageDialog(null, "oui aussi tg");
+                        try (FileWriter file = new FileWriter("resultatC.json")) {
+                            file.write(zoneCListe.toJSONString());
+                            file.flush();
+                            JOptionPane.showMessageDialog(null, "Résultat ecrit dans le fichier JSON");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });
     }
-
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         new FrmMenu().setVisible(true);
     }
 
-    //Getters
+    // Getters
 
     public JButton getBtnExporter() {
         return btnExporter;
@@ -107,32 +132,4 @@ public class FrmMenu extends JFrame {
     public JCheckBox getBoxApi1(Icon icon, boolean s) {
         return boxZoneA;
     }
-
-    public JCheckBox getBoxApi2() {
-        return boxZoneB;
-    }
-
-    public JCheckBox getBoxApi3() {
-        return boxZoneC;
-    }
-
-    public JCheckBox getBoxApi4() {
-        return boxJourFerie;
-    }
-
-    public JCheckBox getBoxApi5() {
-        return boxApi5;
-    }
-
-    public JSpinner getSpnDuree() {
-        return spnDuree;
-    }
-
-    //Setter
-
-    public void setJcal(JCalendar jcal) {
-        this.jcal = jcal;
-    }
 }
-
-
