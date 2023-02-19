@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 15 fév. 2023 à 22:18
+-- Généré le : lun. 20 fév. 2023 à 00:41
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -31,14 +31,14 @@ CREATE TABLE `jours_feries` (
   `date` varchar(10) DEFAULT NULL,
   `annee` int(4) DEFAULT NULL,
   `zone` varchar(9) DEFAULT NULL,
-  `nom_jour_ferie` varchar(18) DEFAULT NULL
+  `nom` varchar(18) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `jours_feries`
 --
 
-INSERT INTO `jours_feries` (`date`, `annee`, `zone`, `nom_jour_ferie`) VALUES
+INSERT INTO `jours_feries` (`date`, `annee`, `zone`, `nom`) VALUES
 ('2003-01-01', 2003, 'Métropole', '1er janvier'),
 ('2003-04-21', 2003, 'Métropole', 'Lundi de Pâques'),
 ('2003-05-01', 2003, 'Métropole', '1er mai'),
@@ -333,12 +333,12 @@ INSERT INTO `jours_feries` (`date`, `annee`, `zone`, `nom_jour_ferie`) VALUES
 --
 
 CREATE TABLE `vacance` (
-  `Description` varchar(27) DEFAULT NULL,
+  `summary` varchar(27) DEFAULT NULL,
   `Population` varchar(28) DEFAULT NULL,
-  `Date de début` varchar(25) DEFAULT NULL,
-  `Date de fin` varchar(25) DEFAULT NULL,
+  `start` varchar(25) DEFAULT NULL,
+  `end` varchar(25) DEFAULT NULL,
   `Académies` varchar(24) DEFAULT NULL,
-  `Zones` varchar(24) DEFAULT NULL,
+  `description` varchar(24) DEFAULT NULL,
   `annee_scolaire` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -346,7 +346,7 @@ CREATE TABLE `vacance` (
 -- Déchargement des données de la table `vacance`
 --
 
-INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de fin`, `Académies`, `Zones`, `annee_scolaire`) VALUES
+INSERT INTO `vacance` (`summary`, `Population`, `start`, `end`, `Académies`, `description`, `annee_scolaire`) VALUES
 ('Vacances d\'Hiver', '-', '2010-02-22T00:00:00+01:00', '2010-03-08T00:00:00+01:00', 'Corse', 'Corse', '2009-2010'),
 ('Vacances de Noël', '-', '2010-12-20T00:00:00+01:00', '2011-01-03T00:00:00+01:00', 'Corse', 'Corse', '2010-2011'),
 ('Vacances d\'Été', 'Enseignants', '2011-07-06T00:00:00+02:00', '2011-09-08T00:00:00+02:00', 'Corse', 'Corse', '2010-2011'),
@@ -745,9 +745,9 @@ INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de f
 ('Vacances d\'Été', 'Enseignants', '2010-07-08T00:00:00+02:00', '2010-09-08T00:00:00+02:00', 'Corse', 'Corse', '2009-2010'),
 ('Vacances de la Toussaint', '-', '2010-10-25T00:00:00+02:00', '2010-11-02T00:00:00+01:00', 'Corse', 'Corse', '2010-2011'),
 ('Vacances de Printemps', '-', '2012-04-23T00:00:00+02:00', '2012-05-07T00:00:00+02:00', 'Corse', 'Corse', '2011-2012'),
-('Vacances d\'Été', 'Élèves', '2012-07-09T00:00:00+02:00', '2012-09-10T00:00:00+02:00', 'Corse', 'Corse', '2011-2012');
-INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de fin`, `Académies`, `Zones`, `annee_scolaire`) VALUES
-('Vacances de la Toussaint', '-', '2012-10-29T00:00:00+01:00', '2012-11-12T00:00:00+01:00', 'Corse', 'Corse', '2012-2013'),
+('Vacances d\'Été', 'Élèves', '2012-07-09T00:00:00+02:00', '2012-09-10T00:00:00+02:00', 'Corse', 'Corse', '2011-2012'),
+('Vacances de la Toussaint', '-', '2012-10-29T00:00:00+01:00', '2012-11-12T00:00:00+01:00', 'Corse', 'Corse', '2012-2013');
+INSERT INTO `vacance` (`summary`, `Population`, `start`, `end`, `Académies`, `description`, `annee_scolaire`) VALUES
 ('Vacances d\'Été', 'Élèves', '2013-07-08T00:00:00+02:00', '2013-09-06T00:00:00+02:00', 'Corse', 'Corse', '2012-2013'),
 ('Vacances d\'Été', 'Élèves', '2014-07-10T00:00:00+02:00', '2014-09-04T00:00:00+02:00', 'Corse', 'Corse', '2013-2014'),
 ('Vacances d\'Hiver', '-', '2015-02-22T00:00:00+01:00', '2015-03-09T00:00:00+01:00', 'Corse', 'Corse', '2014-2015'),
@@ -1147,9 +1147,9 @@ INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de f
 ('Vacances d\'Hiver', '-', '2018-02-17T00:00:00+01:00', '2018-03-05T00:00:00+01:00', 'Versailles', 'Zone C', '2017-2018'),
 ('Vacances d\'Hiver', '-', '2018-02-24T00:00:00+01:00', '2018-03-12T00:00:00+01:00', 'Reims', 'Zone B', '2017-2018'),
 ('Vacances d\'Hiver', '-', '2018-02-24T00:00:00+01:00', '2018-03-12T00:00:00+01:00', 'Strasbourg', 'Zone B', '2017-2018'),
-('Vacances de Carnaval', '-', '2018-02-24T00:00:00+01:00', '2018-03-12T00:00:00+01:00', 'Mayotte', 'Mayotte', '2017-2018');
-INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de fin`, `Académies`, `Zones`, `annee_scolaire`) VALUES
-('Vacances de Printemps', '-', '2018-03-29T00:00:00+02:00', '2018-04-16T00:00:00+02:00', 'Guyane', 'Guyane', '2017-2018'),
+('Vacances de Carnaval', '-', '2018-02-24T00:00:00+01:00', '2018-03-12T00:00:00+01:00', 'Mayotte', 'Mayotte', '2017-2018'),
+('Vacances de Printemps', '-', '2018-03-29T00:00:00+02:00', '2018-04-16T00:00:00+02:00', 'Guyane', 'Guyane', '2017-2018');
+INSERT INTO `vacance` (`summary`, `Population`, `start`, `end`, `Académies`, `description`, `annee_scolaire`) VALUES
 ('Vacances de Printemps', '-', '2018-04-07T00:00:00+02:00', '2018-04-23T00:00:00+02:00', 'Besançon', 'Zone A', '2017-2018'),
 ('Vacances de Printemps', '-', '2018-04-07T00:00:00+02:00', '2018-04-23T00:00:00+02:00', 'Bordeaux', 'Zone A', '2017-2018'),
 ('Vacances de Printemps', '-', '2018-04-07T00:00:00+02:00', '2018-04-23T00:00:00+02:00', 'Clermont-Ferrand', 'Zone A', '2017-2018'),
@@ -1550,9 +1550,9 @@ INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de f
 ('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Dijon', 'Zone A', '2018-2019'),
 ('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Lyon', 'Zone A', '2018-2019'),
 ('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Amiens', 'Zone B', '2018-2019'),
-('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Reims', 'Zone B', '2018-2019');
-INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de fin`, `Académies`, `Zones`, `annee_scolaire`) VALUES
-('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Strasbourg', 'Zone B', '2018-2019'),
+('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Reims', 'Zone B', '2018-2019'),
+('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Strasbourg', 'Zone B', '2018-2019');
+INSERT INTO `vacance` (`summary`, `Population`, `start`, `end`, `Académies`, `description`, `annee_scolaire`) VALUES
 ('Vacances de la Toussaint', '-', '2018-10-20T00:00:00+02:00', '2018-11-05T00:00:00+01:00', 'Créteil', 'Zone C', '2018-2019'),
 ('Vacances d\'Été', 'Élèves', '2018-12-15T00:00:00+01:00', '2019-02-11T00:00:00+01:00', 'Wallis et Futuna', 'Wallis et Futuna', '2018'),
 ('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Caen', 'Zone B', '2018-2019'),
@@ -1953,9 +1953,9 @@ INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de f
 ('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Nice', 'Zone B', '2018-2019'),
 ('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Reims', 'Zone B', '2018-2019'),
 ('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Rouen', 'Zone B', '2018-2019'),
-('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Strasbourg', 'Zone B', '2018-2019');
-INSERT INTO `vacance` (`Description`, `Population`, `Date de début`, `Date de fin`, `Académies`, `Zones`, `annee_scolaire`) VALUES
-('Vacances d\'Hiver', '-', '2019-02-09T00:00:00+01:00', '2019-02-25T00:00:00+01:00', 'Aix-Marseille', 'Zone B', '2018-2019'),
+('Vacances de Noël', '-', '2018-12-22T00:00:00+01:00', '2019-01-07T00:00:00+01:00', 'Strasbourg', 'Zone B', '2018-2019'),
+('Vacances d\'Hiver', '-', '2019-02-09T00:00:00+01:00', '2019-02-25T00:00:00+01:00', 'Aix-Marseille', 'Zone B', '2018-2019');
+INSERT INTO `vacance` (`summary`, `Population`, `start`, `end`, `Académies`, `description`, `annee_scolaire`) VALUES
 ('Vacances d\'Hiver', '-', '2019-02-09T00:00:00+01:00', '2019-02-25T00:00:00+01:00', 'Orléans-Tours', 'Zone B', '2018-2019'),
 ('Vacances d\'Hiver', '-', '2019-02-16T00:00:00+01:00', '2019-03-04T00:00:00+01:00', 'Bordeaux', 'Zone A', '2018-2019'),
 ('Vacances d\'Hiver', '-', '2019-02-23T00:00:00+01:00', '2019-03-11T00:00:00+01:00', 'Toulouse', 'Zone C', '2018-2019'),
