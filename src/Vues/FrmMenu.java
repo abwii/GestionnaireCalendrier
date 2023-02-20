@@ -1,5 +1,6 @@
 package Vues;
 
+import Entities.JoursFeries;
 import com.toedter.calendar.JCalendar;
 import Controllers.*;
 import org.json.simple.JSONArray;
@@ -58,7 +59,6 @@ public class FrmMenu extends JFrame {
                     try {
                         CtrlZoneA ctrlZoneA = new CtrlZoneA(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
                         JSONArray zoneAListe = (JSONArray) ctrlZoneA.GetAllJourZoneA();
-                        JOptionPane.showMessageDialog(null, "ca marche");
                         try (FileWriter file = new FileWriter("resultatA.json")) {
                             file.write(zoneAListe.toJSONString());
                             file.flush();
@@ -80,7 +80,6 @@ public class FrmMenu extends JFrame {
                     try {
                         CtrlZoneB ctrlZoneB = new CtrlZoneB(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
                         JSONArray zoneBListe = (JSONArray) ctrlZoneB.GetAllJourZoneB();
-                        JOptionPane.showMessageDialog(null, "ca marche aussi");
                         try (FileWriter file = new FileWriter("resultatB.json")) {
                             file.write(zoneBListe.toJSONString());
                             file.flush();
@@ -103,7 +102,6 @@ public class FrmMenu extends JFrame {
                     try {
                         CtrlZoneC ctrlZoneC = new CtrlZoneC(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
                         JSONArray zoneCListe = (JSONArray) ctrlZoneC.GetAllJourZoneC();
-                        JOptionPane.showMessageDialog(null, "oui aussi tg");
                         try (FileWriter file = new FileWriter("resultatC.json")) {
                             file.write(zoneCListe.toJSONString());
                             file.flush();
@@ -115,6 +113,25 @@ public class FrmMenu extends JFrame {
                         throw new RuntimeException(ex);
                     }
                 }
+            }
+        });
+        boxJourFerie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {try {
+                ExportJson joursFeries = new ExportJson(DriverManager.getConnection("jdbc:mysql://localhost/calendrier", "root", ""));
+                JSONArray jourFerie = (JSONArray) joursFeries.GetAllJourFerie();
+                try (FileWriter file = new FileWriter("resultatFeries.json")) {
+                    file.write(jourFerie.toJSONString());
+                    file.flush();
+                    JOptionPane.showMessageDialog(null, "Résultat ecrit dans le fichier JSON");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+
             }
         });
     }
