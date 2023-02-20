@@ -3,32 +3,19 @@ package Entities;
 import java.util.Date;
 
 public class JoursFeries {
-    private Date date;
-    private int annee;
-    private String zone;
-    private String nom;
+    private Date Start;
+    private String Summary;
 
-    public JoursFeries(Date date, int annee, String zone, String nom) {
-        this.date = date;
-        this.annee = annee;
-        this.zone = zone;
-        this.nom = nom;
+    public JoursFeries(Date date, String summary) {
+        this.Start = date;
+        this.Summary = summary;
     }
 
 
-    public Date getDate() {
-        return date;
+    public Date getStart() {
+        return Start;
     }
-
-    public int getAnnee() {
-        return annee;
-    }
-
-    public String getZone() {
-        return zone;
-    }
-
-    public String getNom() {
-        return nom;
+    public String getSummary() {
+        return Summary;
     }
 }

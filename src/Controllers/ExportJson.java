@@ -1,49 +1,44 @@
 package Controllers;
 import Entities.JoursFeries;
-import Tools.ConnexionBDD;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.*;
-import java.util.ArrayList;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ExportJson {
     private Connection cnx;
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public ExportJson() {
-        cnx = ConnexionBDD.getCnx();
+    public ExportJson(Connection cnx) {
+        this.cnx = cnx;
     }
-    public ArrayList<JoursFeries> GetAllJourFeries(){
-        ArrayList<JoursFeries> lesJoursFeries = new ArrayList<>();
 
+    public ArrayList<JSONObject> GetAllJourFerie() {
+        ArrayList<JSONObject> jsonList = new JSONArray();
         try {
-            ps = cnx.prepareStatement("SELECT `Description`,`Date de début`,`Date de fin`,`Zones` FROM `vacance`");
+            ps = cnx.prepareStatement("SELECT `summary`, `start` FROM `jours_feries`");
             rs = ps.executeQuery();
-
-            JSONArray json = new JSONArray();
             ResultSetMetaData rsmd = rs.getMetaData();
             int numColumns = rsmd.getColumnCount();
             while (rs.next()) {
+                JoursFeries joursFeries = new JoursFeries(rs.getDate("start"),rs.getNString("summary"));
                 JSONObject obj = new JSONObject();
                 for (int i = 1; i <= numColumns; i++) {
                     String column_name = rsmd.getColumnName(i);
                     obj.put(column_name, rs.getObject(column_name));
                 }
-                json.add(obj);
+                jsonList.add(obj);
             }
-            System.out.println(json.toString());
             ps.close();
             rs.close();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlZoneA.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return lesJoursFeries;
+        return jsonList;
     }
+
 }
