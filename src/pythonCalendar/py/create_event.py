@@ -7,9 +7,13 @@ from cal_setup import get_calendar_service
 
 def main():
 
+   idCalendar = input("Entrez l'id de votre agenda : ('p' si agenda principal)")
+   if (idCalendar == 'p') :
+      idCalendar = 'primary'
+
    service = get_calendar_service()
 
-   idCalendar = 'primary'
+   
 
    if (path.exists("resultatA.json") == True) :
       resultatA = open("resultatA.json", "r")
