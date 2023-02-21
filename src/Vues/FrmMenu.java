@@ -1,12 +1,15 @@
 package Vues;
 
-import Entities.JoursFeries;
 import com.toedter.calendar.JCalendar;
 import Controllers.*;
 import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -132,6 +135,23 @@ public class FrmMenu extends JFrame {
             }
 
 
+            }
+        });
+        btnExporter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JSONParser parser = new JSONParser();
+                try {
+                    JSONArray ferie = (JSONArray) parser.parse(new FileReader("resultatFeries.json"));
+                    var httpmanager = new HttpManager();
+                    httpmanager.postTest("https://webhook.site/ce6ebed9-bcd3-4a75-936e-c298e58fefde", ferie);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
