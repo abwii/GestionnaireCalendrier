@@ -140,18 +140,6 @@ public class FrmMenu extends JFrame {
         btnExporter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JSONParser parser = new JSONParser();
-                try {
-                    JSONArray ferie = (JSONArray) parser.parse(new FileReader("resultatFeries.json"));
-                    var httpmanager = new HttpManager();
-                    httpmanager.postTest("https://webhook.site/ce6ebed9-bcd3-4a75-936e-c298e58fefde", ferie);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ParseException ex) {
-                    throw new RuntimeException(ex);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
             }
         });
     }
