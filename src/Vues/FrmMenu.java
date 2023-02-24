@@ -50,7 +50,7 @@ public class FrmMenu extends JFrame {
 
                 // Requête Google Calendar API en Python
 
-                JOptionPane.showMessageDialog(null, "owo");
+                JOptionPane.showMessageDialog(null, "Maintenant, ouvre le fichier 'create_event.py' dans un IDE et execute-le.");
 
             }
         });
