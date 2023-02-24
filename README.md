@@ -5,7 +5,7 @@
 5 - Pour Java : Sur votre IDE, veuillez vous assurer que dans vos modules les fichier présent dans lib (jcalendar1-4.jar, json-simple-1.1.jar, jyhton-stndalone-2.7.3.jar et mysql-connector-java-5.1.48.jar). Si ils ne sont pas présent, veuillez les ajouter. <br>
  <br>
 Fonctionnement : <br>
-- Ouvrir le fichier "MyCalendar.jar" <br>
+- Ouvrir le fichier "MyCalendar.jar" présent dans les Releases du repository <br>
 - Séléctionner des topics <br>
 - Appuyer sur "Exporter" <br>
 - Executer le fichier "create_event.py"¹ dans "GestionnaireCalendrier/src/pythonCalendar/py/" <br>
