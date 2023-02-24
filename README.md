@@ -9,7 +9,7 @@ Fonctionnement : <br>
 - Séléctionner des topics <br>
 - Appuyer sur "Exporter" <br>
 - Executer le fichier "create_event.py"¹ dans "GestionnaireCalendrier/src/pythonCalendar/py/" <br>
-- Suivre les informations de Google <br>
+- Suivre les informations de Google en utilisant le compte Google d'experimentation ( testbtssioslam@gmail.com ; testBtsSlam ) <br>
 - Enjoy 🎈<br>
 <br>
 ¹Important : par défaut, l'ajout d'evenement se fait dans l'agenda principal. Pour changer cela, créez un agenda sur Google Calendar, récupérez son id et mettez le dans la console après avoir executé le script.
