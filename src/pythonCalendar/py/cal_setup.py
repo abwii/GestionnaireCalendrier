@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-CREDENTIALS_FILE = 'src\pythonCalendar\py\json\code_api.json'
+CREDENTIALS_FILE = 'GestionnaireCalendrier-main\src\pythonCalendar\py\json\code_api.json'
 
 def get_calendar_service():
    creds = None
